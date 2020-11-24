@@ -33,7 +33,6 @@ module.exports = {
     usage: "serverinfo",
     execute(message) {
         const member = message.mentions.members.first() || message.member;
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
         const roles = message.guild.roles.cache
         .filter(r => r.id !== message.guild.id)
@@ -51,7 +50,7 @@ module.exports = {
         const Embed = new Discord.MessageEmbed()
             .setThumbnail(message.guild.iconURL({ dynamic: true }))
             .setDescription(`**Guild information for __${message.guild.name}__**`)
-            .setColor(randomColor)
+            .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .addField("__General__", stripIndents`
                 **❯ Name:** ${message.guild.name}
                 **❯ Owner:** <@!${message.guild.ownerID}>

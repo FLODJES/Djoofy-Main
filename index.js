@@ -85,7 +85,7 @@ client.on("message", message => {
 });
 
 // Send text that has been written in the console
-process.stdin.on("readable", () => {
+/* process.stdin.on("readable", () => {
 	let chunk;
 	while ((chunk = process.stdin.read()) !== null) {
 		const channel = client.channels.cache.get("779977710012727316");
@@ -97,7 +97,7 @@ process.stdin.on("readable", () => {
 		}
 		
 	}
-});
+}); */
 
 // Handling errors
 client.on("shardError", error => {
