@@ -1,0 +1,8 @@
+[x] Make the bot working.
+[x] Make whois.js work
+    [x] Display roles
+    [x] Fix role count
+
+[x] Make serverinfo.js
+
+[] Put this files on github for prozilla(host) 
