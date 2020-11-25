@@ -6,7 +6,7 @@
 ## How can I see the **list of commands**?
 With the command **_help**
 
-![_help](https://cdn.discordapp.com/attachments/780904414516346900/780904437723168768/help.png)
+![_help](https://cdn.discordapp.com/attachments/780904414516346900/781097882103054378/unknown.png)
 
 As you can see you can see all the commands there.
 
