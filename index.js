@@ -85,19 +85,18 @@ client.on("message", message => {
 });
 
 // Send text that has been written in the console
-/* process.stdin.on("readable", () => {
-	let chunk;
-	while ((chunk = process.stdin.read()) !== null) {
-		const channel = client.channels.cache.get("779977710012727316");
-		try {
-			channel.send(chunk);
-		} catch (error) {
-			console.error(error);
-			console.log("An error occured while trying to send a message to CrumblingCity.574561977880281088");
-		}
-		
-	}
-}); */
+process.stdin.on("readable", () => {
+    let chunk;
+    while ((chunk = process.stdin.read()) !== null) {
+        const channel = client.channels.cache.get("779977710012727316");
+        try {
+            channel.send(chunk);
+        } catch (error) {
+            console.error(error);
+            console.log("An error occured while trying to send a message to the bot-commands channel");
+        }
+    }
+});
 
 // Handling errors
 client.on("shardError", error => {

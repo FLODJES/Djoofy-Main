@@ -1,0 +1,1 @@
+git push --> Stuur files door naar github.com

@@ -5,4 +5,6 @@
 
 [x] Make serverinfo.js
 
-[] Put this files on github for prozilla(host) 
+[x] Put this files on github for prozilla(host) 
+
+[] Make the bot avaible for everyone.
