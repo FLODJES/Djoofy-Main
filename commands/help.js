@@ -23,6 +23,7 @@ module.exports = {
                 `)
             .addField("__Extra__", stripIndents`
                 **❯ ${prefix}vote:** Get a cookie :cookie: irl! (**no scam, i swear**)
+                **❯ ${prefix}invite:** invite the bot for your onw server :)))
                 `)
             .setTimestamp()
             .setFooter("made by FLODJES#5225");
