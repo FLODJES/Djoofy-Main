@@ -30,7 +30,7 @@ module.exports = {
         
         // Create embed 
         const Embed = new Discord.MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/attachments/786177429101084677/786953481821880330/Djoofy_logo.gif')
+            .setThumbnail('https://cdn.discordapp.com/attachments/786177429101084677/786969892091199549/Djoofy_logo.gif')
             .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .setDescription(`**__Djoofy's__ information**`)
             .addField("__General information__", stripIndents`
