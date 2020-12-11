@@ -5,7 +5,7 @@ const client = new Discord.Client();
 
 module.exports = {    
     name: "help",
-    description: "Show the help command",
+    description: "List all commands or give information (name, description, aliases,...) of a specific command",
     aliases: ["help"],
     usage: prefix + "help [command]",
     category: categories[0],
@@ -33,7 +33,7 @@ module.exports = {
                         }
                     });
                     if (value.length != 0) {
-                        Embed.addField(stripIndents, "__" + cat + "__", value);
+                        Embed.addField("__" + cat + "__", value);
                     }
                 });
                 return message.channel.send(Embed);
