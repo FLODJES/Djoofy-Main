@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
+const config = require("../config.json");
 
 const verificationLevels = {
 	NONE: 'None',
@@ -29,7 +30,8 @@ module.exports = {
     name: "serverinfo",
     description: "Give info about the server",
     aliases: ["server", "serverinfo"],
-    usage: "serverinfo",
+    usage: config["prefix"] + "serverinfo",
+    category: config["categories"][0],
     execute(message) {
         const member = message.mentions.members.first() || message.member;
 

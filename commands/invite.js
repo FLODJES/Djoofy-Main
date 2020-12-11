@@ -1,13 +1,14 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { prefix, owner } = require("../config.json");
+const config = require("../config.json");
 
 
 module.exports = {    
     name: "invite",
     description: "Invite the bot to your server!",
     aliases: ["invite"],
-    usage: "invite",
+    usage: config["prefix"] + "invite",
+    category: config["categories"][1],
     execute(message) {
 
         const member = message.mentions.members.first() || message.member;

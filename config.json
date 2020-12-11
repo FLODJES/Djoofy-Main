@@ -1,4 +1,5 @@
 {
-	"prefix": "_",
+	"prefix":"_",
+	"categories":["Info", "Extra"],
 	"owner":"Flodjes"
 }

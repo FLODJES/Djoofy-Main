@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const config = require("../config.json");
 const { MessageEmbed, version: djsversion } = require('discord.js');
 const { stripIndents } = require("common-tags");
 const { version } = require('../package.json');
@@ -15,9 +16,10 @@ function formatBytes(bytes) {
 
 module.exports = {    
     name: "botinfo",
-    description: "Give info about the bot",
+    description: "Give info about **Djoofy**",
     aliases: ["botinfo", "bot"],
-    usage: "botinfo",
+    usage: config["prefix"] + "botinfo",
+    category: config["categories"][0],
     execute(message) {
         
         
@@ -30,8 +32,9 @@ module.exports = {
         
         // Create embed 
         const Embed = new Discord.MessageEmbed()
-            .setThumbnail('https://cdn.discordapp.com/attachments/786177429101084677/786969892091199549/Djoofy_logo.gif')
+            .attachFiles(["./files/icon.gif"])
             .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
+            .setThumbnail("attachment://icon.gif")
             .setDescription(`**__Djoofy's__ information**`)
             .addField("__General information__", stripIndents`
                 **❯ Client:** <@!${message.client.user.id}> 
@@ -50,7 +53,7 @@ module.exports = {
                 \u3000 Speed: ${core.speed}MHz
                 `, true) 
             .setTimestamp()
-            .setFooter("made by FLODJES#5225");
+            .setFooter("Made by FLODJES#5225");
 
         message.channel.send(Embed);
     }

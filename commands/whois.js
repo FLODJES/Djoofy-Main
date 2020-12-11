@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
+const config = require("../config.json");
 
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
@@ -22,7 +23,8 @@ module.exports = {
     name: "whois",
     description: "Give info about a specific user",
     aliases: ["whois", "userinfo"],
-    usage: "whois [user]",
+    usage: config["prefix"] + "whois [user]",
+    category: config["categories"][0],
     execute(message) {
         const member = message.mentions.members.first() || message.member;
         

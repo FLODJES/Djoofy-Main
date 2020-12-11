@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 
 process.stdin.setEncoding("utf8");
 
-const { prefix, owner } = require("./config.json");
+const config = require("./config.json");
 const { token } = require("./token.json");
 const client = new Discord.Client();
 
@@ -37,10 +37,10 @@ client.on("ready", () => {
 // Receive messages and respond
 client.on("message", message => {
 	if (message.author.bot || message.channel.type === "dm" 
-	||!message.content.startsWith(prefix)) return;
+	||!message.content.startsWith(config["prefix"])) return;
 	
 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const args = message.content.slice(config["prefix"].length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
 	// Display commands in the console

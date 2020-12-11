@@ -1,13 +1,14 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { prefix, owner } = require("../config.json");
+const config = require("../config.json");
 
 
 module.exports = {    
     name: "vote",
-    description: "Vote to get a cookie",
+    description: "Vote for the server!",
     aliases: ["vote"],
-    usage: "vote",
+    usage: config["prefix"] + "vote",
+    category: config["categories"][1],
     execute(message) {
 
         const member = message.mentions.members.first() || message.member;
