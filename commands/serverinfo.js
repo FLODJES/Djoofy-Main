@@ -58,7 +58,7 @@ module.exports = {
                 **❯ Created:** ${timeCreated}
                 `, true)
             .addField("__Statistics__", stripIndents`
-                **❯ Member Count:** ${message.guild.memberCount}
+                **❯ Member Count:** ${message.guild.memberCount.toLocaleString()}
                 **❯ Role Count:** ${rolesCount}
                 **❯ Emoji Count:** ${emojis.size}
                 **❯ Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}
