@@ -30,11 +30,12 @@ module.exports = {
         
         // Create embed 
         const Embed = new Discord.MessageEmbed()
+            .setThumbnail('https://cdn.discordapp.com/attachments/786177429101084677/786953481821880330/Djoofy_logo.gif')
             .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
+            .setDescription(`**__Djoofy's__ information**`)
             .addField("__General information__", stripIndents`
                 **❯ Client:** <@!${message.client.user.id}> 
                 **❯ Servers:** ${message.client.guilds.cache.size}
-                **❯ Users:** ${message.client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()}
                 **❯ Creation Date:** ${created}
                 **❯ Node.js:** ${process.version}
                 **❯ Version:** v${version}
@@ -47,7 +48,7 @@ module.exports = {
                 \u3000 Cores: ${os.cpus().length}
                 \u3000 Model: ||pirvate sowwyyyy :)))||
                 \u3000 Speed: ${core.speed}MHz
-                `) 
+                `, true) 
             .setTimestamp()
             .setFooter("made by FLODJES#5225");
 
