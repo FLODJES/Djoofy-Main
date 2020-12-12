@@ -22,6 +22,8 @@ module.exports = {
                 .setDescription(`**__Djoofy's help command__**: \nsend **\`${this.usage}\`** to get info on a specific command`)
                 .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
                 .setThumbnail("attachment://icon.gif")
+                .addField("Support the bot" , 
+                    "[Vote here](https://top.gg/bot/780154878395547670/vote) • [Support server](https://discord.gg/cX2xjmZFgZ) • [Invite](https://discord.com/api/oauth2/authorize?client_id=780154878395547670&permissions=8&scope=bot)") 
                 .setTimestamp()
                 .setFooter("Made by FLODJES#5225")
 
@@ -59,7 +61,7 @@ module.exports = {
                         { name: "**__Aliases__**", value: "`[" + aliases + "]`", inline: true },
                     )
                     .setTimestamp()
-                    .setFooter("Made by FLODJES#5225")    
+                    .setFooter("Made by FLODJES#5225")   
     
                 message.channel.send(Embed);
             }
