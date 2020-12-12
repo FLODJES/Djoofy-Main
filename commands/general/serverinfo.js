@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const config = require("../config.json");
+const config = require("../../config.json");
 
 const verificationLevels = {
 	NONE: 'None',
@@ -29,7 +29,7 @@ const regions = {
 module.exports = {    
     name: "serverinfo",
     description: "Give info about the server",
-    aliases: ["server", "serverinfo"],
+    aliases: ["serverinfo"],
     usage: config["prefix"] + "serverinfo",
     category: config["categories"][0],
     execute(message) {

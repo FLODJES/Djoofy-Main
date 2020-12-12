@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { prefix, categories, config } = require("../config.json");
+const { prefix, categories, config } = require("../../config.json");
 const client = new Discord.Client();
 
 module.exports = {    

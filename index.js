@@ -8,15 +8,20 @@ const { token } = require("./token.json");
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
-const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync("./commands/general").filter(file => file.endsWith(".js"));
+const commandFilesMc = fs.readdirSync("./commands/minecraft").filter(file => file.endsWith(".js"));
 
 
 // Add commands to client.commands
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-
-	client.commands.set(command.name, command);
-	console.log(`${command.name} has been loaded.`)
+    const command = require(`./commands/general/${file}`);
+    client.commands.set(command.name, command);
+    console.log(`Loaded ./general/${command.name}`)
+}
+for (const file of commandFilesMc) {
+    const command = require(`./commands/minecraft/${file}`);
+    client.commands.set(command.name, command);
+    console.log(`Loaded ./minecraft/${command.name}`)
 }
 
 // Check for an image function
@@ -29,7 +34,7 @@ function attachIsImage(msgAttach) {
 // Bot startup
 client.on("ready", () => {
 	console.log("Logged in as " + client.user.tag);
-	client.user.setActivity("Being devoloped :))", { type: "PLAYING" });
+	client.user.setActivity("_help", { type: "PLAYING" });
 
 });
 
@@ -88,9 +93,11 @@ client.on("message", message => {
 process.stdin.on("readable", () => {
     let chunk;
     while ((chunk = process.stdin.read()) !== null) {
-        const channel = client.channels.cache.get("779977710012727316");
+		const channel0 = client.channels.cache.get("744611323295301752"); // Sqimps
+		const channel1 = client.channels.cache.get("783386408475557949"); // Proz server
         try {
-            channel.send(chunk);
+			channel0.send(chunk);
+			channel1.send(chunk);
         } catch (error) {
             console.error(error);
             console.log("An error occured while trying to send a message to the bot-commands channel");

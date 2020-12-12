@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../../config.json");
 const { MessageEmbed, version: djsversion } = require('discord.js');
 const { stripIndents } = require("common-tags");
-const { version } = require('../package.json');
+const { version } = require('../../package.json');
 const os = require('os');
 const ms = require('ms');
 

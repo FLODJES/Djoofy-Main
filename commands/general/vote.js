@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const config = require("../config.json");
+const config = require("../../config.json");
 
 
 module.exports = {    
@@ -8,7 +8,7 @@ module.exports = {
     description: "Vote for the server!",
     aliases: ["vote"],
     usage: config["prefix"] + "vote",
-    category: config["categories"][1],
+    category: config["categories"][0],
     execute(message) {
 
         const member = message.mentions.members.first() || message.member;

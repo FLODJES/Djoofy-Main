@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
-const config = require("../config.json");
+const config = require("../../config.json");
 
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
