@@ -11,7 +11,7 @@ module.exports = {
     description: "Get the serverinformation from a minecraft server.",
     aliases: ["server"],
     usage: config["prefix"] + "server [ip]",
-    category: config["categories"][1],
+    category: config["categories"][0],
     execute(message, args) {
 
         const member = message.mentions.members.first() || message.member;

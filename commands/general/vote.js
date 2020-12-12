@@ -8,7 +8,7 @@ module.exports = {
     description: "Vote for the server!",
     aliases: ["vote"],
     usage: config["prefix"] + "vote",
-    category: config["categories"][0],
+    category: config["categories"][1],
     execute(message) {
 
         const member = message.mentions.members.first() || message.member;

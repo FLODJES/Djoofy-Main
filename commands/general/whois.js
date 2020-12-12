@@ -24,7 +24,7 @@ module.exports = {
     description: "Give info about a specific user",
     aliases: ["whois", "userinfo"],
     usage: config["prefix"] + "whois [user]",
-    category: config["categories"][0],
+    category: config["categories"][1],
     execute(message) {
         const member = message.mentions.members.first() || message.member;
         

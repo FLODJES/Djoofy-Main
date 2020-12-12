@@ -93,10 +93,10 @@ client.on("message", message => {
 process.stdin.on("readable", () => {
     let chunk;
     while ((chunk = process.stdin.read()) !== null) {
-		const channel0 = client.channels.cache.get("744611323295301752"); // Sqimps
+		// const channel0 = client.channels.cache.get("744611323295301752"); // Sqimps
 		const channel1 = client.channels.cache.get("783386408475557949"); // Proz server
         try {
-			channel0.send(chunk);
+			// channel0.send(chunk);
 			channel1.send(chunk);
         } catch (error) {
             console.error(error);

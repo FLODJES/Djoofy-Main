@@ -19,7 +19,7 @@ module.exports = {
     description: "Give info about **Djoofy**",
     aliases: ["botinfo", "bot"],
     usage: config["prefix"] + "botinfo",
-    category: config["categories"][0],
+    category: config["categories"][1],
     execute(message) {
         
         

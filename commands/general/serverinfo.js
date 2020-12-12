@@ -31,7 +31,7 @@ module.exports = {
     description: "Give info about the server",
     aliases: ["serverinfo"],
     usage: config["prefix"] + "serverinfo",
-    category: config["categories"][0],
+    category: config["categories"][1],
     execute(message) {
         const member = message.mentions.members.first() || message.member;
 
