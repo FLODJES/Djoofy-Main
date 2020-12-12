@@ -35,7 +35,7 @@ module.exports = {
                         .attachFiles('./server-icon.png')
                         .setThumbnail('attachment://server-icon.png')
                         .setTitle('__Server Status__')
-                        .addField('**❯ Server IP:**', response.host)
+                        .addField('**❯ Server IP:**', "`" + response.host + "`")
                         .addField('**❯ Server Version:**', response.version)
                         .addField('**❯ Online Players:**', response.onlinePlayers)
                         .addField('**❯ Max Players:**', response.maxPlayers)
