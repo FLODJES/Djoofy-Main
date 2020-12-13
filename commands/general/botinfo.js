@@ -16,6 +16,7 @@ function formatBytes(bytes) {
 
 module.exports = {    
     name: "botinfo",
+    helpname: config["prefix"] + "botinfo",
     description: "Give info about **Djoofy**",
     aliases: ["botinfo", "bot"],
     usage: config["prefix"] + "botinfo",

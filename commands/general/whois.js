@@ -21,6 +21,7 @@ const flags = {
 
 module.exports = {    
     name: "whois",
+    helpname: config["prefix"] + "whois",
     description: "Give info about a specific user",
     aliases: ["whois", "userinfo"],
     usage: config["prefix"] + "whois [user]",

@@ -5,6 +5,7 @@ const config = require("../../config.json");
 
 module.exports = {    
     name: "invite",
+    helpname: config["prefix"] + "invite",
     description: "Invite the bot to your server!",
     aliases: ["invite"],
     usage: config["prefix"] + "invite",

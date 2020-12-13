@@ -8,6 +8,7 @@ decode64 = require("base-64").decode;
 
 module.exports = {    
     name: "skin",
+    helpname: "[NEW!](https://top.gg/bot/780154878395547670/vote) " + config["prefix"] + "skin",
     description: "Get the skin from a Java player.",
     aliases: ["skin", "s"],
     usage: config["prefix"] + "skin [username]",

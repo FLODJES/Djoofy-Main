@@ -28,6 +28,7 @@ const regions = {
 
 module.exports = {    
     name: "serverinfo",
+    helpname: config["prefix"] + "serverinfo",
     description: "Give info about the server",
     aliases: ["serverinfo"],
     usage: config["prefix"] + "serverinfo",

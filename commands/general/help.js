@@ -5,6 +5,7 @@ const client = new Discord.Client();
 
 module.exports = {    
     name: "help",
+    helpname: prefix + "help",
     description: "List all commands or give information (name, description, aliases,...) of a specific command",
     aliases: ["help"],
     usage: prefix + "help [command]",
@@ -39,7 +40,7 @@ module.exports = {
                     const value = []
                     commands.forEach(com => {
                         if (com.category == cat) {
-                            value.push(`❯ **${prefix}${com.name}:** ${com.description} \`[${com.aliases}]\``);
+                            value.push(`❯ **${com.helpname}:** ${com.description} \`[${com.aliases}]\``);
                         }
                     });
                     if (value.length != 0) {

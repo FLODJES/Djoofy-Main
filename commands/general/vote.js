@@ -5,6 +5,7 @@ const config = require("../../config.json");
 
 module.exports = {    
     name: "vote",
+    helpname: config["prefix"] + "vote",
     description: "Vote for the server!",
     aliases: ["vote"],
     usage: config["prefix"] + "vote",
