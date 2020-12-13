@@ -42,7 +42,7 @@ module.exports = {
                     };
                 message.channel.send(Embed);
             }).catch((error) => {
-                message.reply("Could you please send a valid server-IP?");
+                message.reply("could you please send a valid server-IP?");
                 console.log(error);
             })
 
