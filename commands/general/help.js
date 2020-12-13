@@ -12,7 +12,11 @@ module.exports = {
     execute(message, args) {
         const data = [];
 		const { commands } = message.client;
-        const member = message.mentions.members.first() || message.member;
+        
+        if (message.channel.type != "dm" ) {
+            const member = message.mentions.members.first() || message.author || message.member;
+        };
+       
         
         if (!args.length) {
 			// inside a command, event listener, etc.
@@ -20,12 +24,16 @@ module.exports = {
             const Embed = new Discord.MessageEmbed()
                 .attachFiles(["./files/icon.gif"])
                 .setDescription(`**__Djoofy's help command__**: \nsend **\`${this.usage}\`** to get info on a specific command`)
-                .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
                 .setThumbnail("attachment://icon.gif")
                 .addField("Support the bot" , 
                     "[Vote here](https://top.gg/bot/780154878395547670/vote) • [Support server](https://discord.gg/cX2xjmZFgZ) • [Invite](https://discord.com/api/oauth2/authorize?client_id=780154878395547670&permissions=8&scope=bot)") 
                 .setTimestamp()
                 .setFooter("Made by FLODJES#5225")
+                if (message.channel.type != "dm" ) {
+                    const member = message.mentions.members.first() || message.member;
+                    Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+                };
+                
 
                 categories.forEach(cat => {
                     const value = []
@@ -53,7 +61,6 @@ module.exports = {
                 }
     
                 const Embed = new Discord.MessageEmbed()
-                    .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
                     .setTitle("Extra command info.")
                     .setDescription(prefix + command.name + ":")
                     .addFields(
@@ -61,7 +68,11 @@ module.exports = {
                         { name: "**__Aliases__**", value: "`[" + aliases + "]`", inline: true },
                     )
                     .setTimestamp()
-                    .setFooter("Made by FLODJES#5225")   
+                    .setFooter("Made by FLODJES#5225")
+                    if (message.channel.type != "dm" ) {
+                        const member = message.mentions.members.first() || message.member;
+                        Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+                    }; 
     
                 message.channel.send(Embed);
             }

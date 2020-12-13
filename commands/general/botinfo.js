@@ -27,13 +27,10 @@ module.exports = {
         const core = os.cpus()[0];
 
         const created = new Intl.DateTimeFormat('en-US').format(message.client.user.createdTimestampt);
-
-        const member = message.mentions.members.first() || message.member;
         
         // Create embed 
         const Embed = new Discord.MessageEmbed()
             .attachFiles(["./files/icon.gif"])
-            .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .setThumbnail("attachment://icon.gif")
             .setDescription(`**__Djoofy's__ information**`)
             .addField("__General information__", stripIndents`
@@ -53,7 +50,11 @@ module.exports = {
                 \u3000 Speed: ${core.speed}MHz
                 `, true) 
             .setTimestamp()
-            .setFooter("Made by FLODJES#5225");
+            .setFooter("Made by FLODJES#5225")
+            if (message.channel.type != "dm" ) {
+                const member = message.mentions.members.first() || message.member;
+                Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+            };
 
         message.channel.send(Embed);
     }

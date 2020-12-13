@@ -10,17 +10,18 @@ module.exports = {
     usage: config["prefix"] + "vote",
     category: config["categories"][1],
     execute(message) {
-
-        const member = message.mentions.members.first() || message.member;
         
         // Create embed
         const Embed = new Discord.MessageEmbed()
-            .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .addField("__Vote__", stripIndents`
                 **❯ Discord bot list:** [Vote here](https://discordbotlist.com/bots/djoofy)
                 `)
             .setTimestamp()
-            .setFooter("made by FLODJES#5225");
+            .setFooter("made by FLODJES#5225")
+            if (message.channel.type != "dm" ) {
+                const member = message.mentions.members.first() || message.member;
+                Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+            };
 
         message.channel.send(Embed);
     }

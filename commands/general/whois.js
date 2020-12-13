@@ -26,6 +26,9 @@ module.exports = {
     usage: config["prefix"] + "whois [user]",
     category: config["categories"][1],
     execute(message) {
+
+        if (message.channel.type === "dm" ) return message.reply("Sorry, but I can't send any userinfo in DM's.");
+
         const member = message.mentions.members.first() || message.member;
         
         // Get member roles

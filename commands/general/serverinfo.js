@@ -33,6 +33,9 @@ module.exports = {
     usage: config["prefix"] + "serverinfo",
     category: config["categories"][1],
     execute(message) {
+
+        if (message.channel.type === "dm" ) return message.reply("I can't send server info in DM's.");
+    
         const member = message.mentions.members.first() || message.member;
 
         const roles = message.guild.roles.cache

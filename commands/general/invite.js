@@ -15,12 +15,15 @@ module.exports = {
         
         // Create embed
         const Embed = new Discord.MessageEmbed()
-            .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .addField("__Invite__", stripIndents`
                 **❯ Invite the bot [here](https://discord.com/api/oauth2/authorize?client_id=780154878395547670&permissions=8&scope=bot)**
                 `)
             .setTimestamp()
-            .setFooter("made by FLODJES#5225");
+            .setFooter("made by FLODJES#5225")
+            if (message.channel.type != "dm" ) {
+                const member = message.mentions.members.first() || message.member;
+                Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+            };
 
         message.channel.send(Embed);
     }

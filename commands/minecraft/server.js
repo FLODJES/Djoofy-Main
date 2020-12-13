@@ -13,8 +13,6 @@ module.exports = {
     usage: config["prefix"] + "server [ip]",
     category: config["categories"][0],
     execute(message, args) {
-
-        const member = message.mentions.members.first() || message.member;
         
         const serverIP = args[0] || 'play.hypixel.net';
 
@@ -29,7 +27,6 @@ module.exports = {
 
                 // Create embed
                 const Embed = new Discord.MessageEmbed()
-                    .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
                     .setTimestamp()
                     .attachFiles('./server-icon.png')
                     .setThumbnail('attachment://server-icon.png')
@@ -39,6 +36,10 @@ module.exports = {
                     .addField('**❯ Online Players:**', response.onlinePlayers)
                     .addField('**❯ Max Players:**', response.maxPlayers)
                     .setFooter("Made by FLODJES#5225")
+                    if (message.channel.type != "dm" ) {
+                        const member = message.mentions.members.first() || message.member;
+                        Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+                    };
                 message.channel.send(Embed);
             }).catch((error) => {
                 message.reply("Could you please send a valid server-IP?");

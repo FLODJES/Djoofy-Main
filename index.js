@@ -41,7 +41,7 @@ client.on("ready", () => {
 
 // Receive messages and respond
 client.on("message", message => {
-	if (message.author.bot || message.channel.type === "dm" 
+	if (message.author.bot /* || message.channel.type === "dm" */
 	||!message.content.startsWith(config["prefix"])) return;
 	
 
