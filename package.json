@@ -19,6 +19,8 @@
     "fs": "0.0.1-security",
     "mcdata": "^1.0.8",
     "minecraft-server-util": "^3.4.0",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "request": "^2.88.2",
+    "sharp": "^0.26.3"
   }
 }

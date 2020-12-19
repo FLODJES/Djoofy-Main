@@ -19,13 +19,13 @@ module.exports = {
         const user = args[0];
 
         mcdata.playerStatus(user).then((response) => {
-            console.log(response);
+            // console.log(response);
 
                 // Create embed
                 const Embed = new Discord.MessageEmbed()
                     .setTitle("Player Cape")
                     .addField("**__Username__**", "❯ `" + response.username + "`")
-                    .setImage(response.cape)
+                    .setImage(response.skin.cape)
                     .setFooter("Made by FLODJES#5225")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {
