@@ -34,7 +34,7 @@ function attachIsImage(msgAttach) {
 // Bot startup
 client.on("ready", () => {
 	console.log("Logged in as " + client.user.tag);
-	client.user.setActivity("_help", { type: "PLAYING" });
+	client.user.setActivity("_help | " + client.guilds.cache.size + " servers", { type: "PLAYING" });
 
 });
 
