@@ -24,12 +24,12 @@ module.exports = {
                 var icon = response.favicon.replace("data:image/png;base64,", " ")
                 var base64str = icon;
                 var bitmap = new Buffer.alloc(16384, base64str.toString(), 'base64');
-                fs.writeFileSync('./server-icon.png', bitmap);
+                fs.writeFileSync('./files/server-icon.png', bitmap);
 
                 // Create embed
                 const Embed = new Discord.MessageEmbed()
                     .setTimestamp()
-                    .attachFiles('./server-icon.png')
+                    .attachFiles('./files/server-icon.png')
                     .setThumbnail('attachment://server-icon.png')
                     .setTitle('__Server Status__')
                     .addField('**❯ Server IP:**', "`" + response.host + "`")

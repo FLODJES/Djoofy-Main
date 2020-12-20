@@ -2,47 +2,78 @@ const Discord = require("discord.js");
 const { stripIndents } = require("common-tags");
 const mcdata = require('mcdata');
 const config = require("../../config.json");
-const Canvas = require('canvas');
+const Jimp = require('jimp');
+const http = require('http');
+const fs = require('fs');
 
 
 module.exports = {    
     name: "cape",
     helpname: "[NEW!](https://top.gg/bot/780154878395547670/vote) " + config["prefix"] + "cape",
-    description: "Get the cape from a Java player.",
-    aliases: ["cape", "c"],
+    description: "Get the optifine cape from a Java player.",
+    aliases: ["cape", "optifine"],
     usage: config["prefix"] + "cape [username]",
     category: config["categories"][0],
     execute : async (message, args) => {
         
         if(!args[0]) return message.channel.send("You must include a minecraft Java player's ign")
         const user = args[0];
-        const response = mcdata.playerStatus(user).then((response) => {
-            console.log(response);
-        });
 
-            const canvas = Canvas.createCanvas(210, 310);
-            const ctx = canvas.getContext('2d');
+        mcdata.playerStatus(user).then( async (response) => {
 
-
-            const capeImage = await Canvas.loadImage('./files/cape.png');
-            ctx.drawImage(capeImage, 0, 0, canvas.width, canvas.height);
-            // Use helpful Attachment class structure to process the file for you
-            const attachment = new Discord.MessageAttachment(canvas.toBuffer(), './files/cape.png');
-
-            message.channel.send(attachment);
-
-    },
-}; 
-
-                // Create embed
-                /* const Embed = new Discord.MessageEmbed()
-                    .setTitle("Player Cape")
-                    .addField("**__Username__**", "❯ `" + response.username + "`")
-                    .setImage(attachment)
+            /* // Download the cape file. No need to.
+            const file = fs.createWriteStream("./files/cape.png");
+            const request = http.get(`http://s.optifine.net/capes/${response.username}.png`, function(response) {
+            response.pipe(file);
+            });
+            */
+            
+            await Jimp.read(`http://s.optifine.net/capes/${response.username}.png`)
+            .then(cape => {
+                cape
+                .resize(920, 440, Jimp.RESIZE_NEAREST_NEIGHBOR, (err, cape) => {cape.crop( 20, 20, 200, 300 )})
+                .write('./files/capeFinal.png');
+            })
+            .catch(err => {
+                // console.error(err);
+                // Create embed (user doesn't have a cape)
+                const noCape = new Discord.MessageEmbed()
+                    .setTitle(response.username + " doesn't have an Optifine cape.")
                     .setFooter("Made by FLODJES#5225")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {
                         const member = message.mentions.members.first() || message.member;
-                        Embed.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+                        noCape.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
                     };
-                message.channel.send(Embed);  */
+                message.channel.send(noCape);
+                const path = './files/capeFinal.png'
+
+                fs.unlink(path, (err) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+
+                //file removed
+                })
+
+            });
+
+                // Create embed (user had a cape)
+                const cape = new Discord.MessageEmbed()
+                    .setTitle("Optifine cape from " + response.username + ".")
+                    .attachFiles(['./files/capeFinal.png'])
+                    .setImage('attachment://capeFinal.png')
+                    .setFooter("Made by FLODJES#5225")
+                    .setTimestamp();
+                    if (message.channel.type != "dm" ) {
+                        const member = message.mentions.members.first() || message.member;
+                        cape.setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor);
+                    };
+                message.channel.send(cape);
+        
+        })
+
+    },
+}; 
+

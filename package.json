@@ -16,12 +16,15 @@
     "cropperjs": "^1.5.9",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
+    "download-file": "^0.1.5",
     "eslint": "^7.11.0",
     "fs": "0.0.1-security",
+    "image-downloader": "^4.0.2",
     "jimp": "^0.16.1",
     "mcdata": "^1.0.8",
     "minecraft-server-util": "^3.4.0",
     "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
     "request": "^2.88.2",
     "sharp": "^0.26.3"
   }
