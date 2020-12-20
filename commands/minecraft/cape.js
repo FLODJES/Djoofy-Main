@@ -20,6 +20,7 @@ module.exports = {
         const user = args[0];
 
         mcdata.playerStatus(user).then( async (response) => {
+            // console.log(response);
 
             /* // Download the cape file. No need to.
             const file = fs.createWriteStream("./files/cape.png");
@@ -38,7 +39,7 @@ module.exports = {
                 // console.error(err);
                 // Create embed (user doesn't have a cape)
                 const noCape = new Discord.MessageEmbed()
-                    .setTitle(response.username + " doesn't have an Optifine cape.")
+                    .setAuthor(response.username + "doesn't have an Optifine cape.", "https://mc-heads.net/avatar/" + response.uuid)
                     .setFooter("Made by FLODJES#5225")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {
@@ -61,7 +62,7 @@ module.exports = {
 
                 // Create embed (user had a cape)
                 const cape = new Discord.MessageEmbed()
-                    .setTitle("Optifine cape from " + response.username + ".")
+                    .setAuthor("Optifine cape from " + response.username + ".", "https://mc-heads.net/avatar/" + response.uuid)
                     .attachFiles(['./files/capeFinal.png'])
                     .setImage('attachment://capeFinal.png')
                     .setFooter("Made by FLODJES#5225")
