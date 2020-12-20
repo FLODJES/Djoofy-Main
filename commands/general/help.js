@@ -23,7 +23,7 @@ module.exports = {
 			// inside a command, event listener, etc.
             // Create embed
             const Embed = new Discord.MessageEmbed()
-                .attachFiles(["./files/icon.gif"])
+                .attachFiles(["./files/ui/icon.gif"])
                 .setDescription(`**__Djoofy's help command__**: \nsend **\`${this.usage}\`** to get info on a specific command`)
                 .setThumbnail("attachment://icon.gif")
                 .addField("Support the bot" , 

@@ -31,7 +31,7 @@ module.exports = {
         
         // Create embed 
         const Embed = new Discord.MessageEmbed()
-            .attachFiles(["./files/icon.gif"])
+            .attachFiles(["./files/ui/icon.gif"])
             .setThumbnail("attachment://icon.gif")
             .setDescription(`**__Djoofy's__ information**`)
             .addField("__General information__", stripIndents`
