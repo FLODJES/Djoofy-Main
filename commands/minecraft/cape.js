@@ -49,13 +49,12 @@ module.exports = {
                 message.channel.send(noCape);
                 const path = './files/capeFinal.png'
 
-                fs.unlink(path, (err) => {
-                if (err) {
-                    console.error(err)
-                    return
-                }
-
-                //file removed
+                // remove file
+                    fs.unlink(path, (err) => {
+                    if (err) {
+                        console.error(err)
+                        return
+                    }
                 })
 
             });

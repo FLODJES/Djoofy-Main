@@ -26,7 +26,7 @@ module.exports = {
                     .setTitle("Player skin")
                     .addField("**__Username__**", "❯ `" + response.username + "`")
                     .addField("**__Apply skin__**", "❯ [Click here](https://www.minecraft.net/en-us/profile/skin/remote%3Furl%3Dhttps%3A//visage.surgeplay.com/skin/" + response.uuid + ")")
-                    .setImage(response.skin.body)
+                    .setImage(response.skin.body0)
                     .setFooter("Made by FLODJES#5225")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {

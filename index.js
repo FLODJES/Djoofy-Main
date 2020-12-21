@@ -10,6 +10,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync("./commands/general").filter(file => file.endsWith(".js"));
 const commandFilesMc = fs.readdirSync("./commands/minecraft").filter(file => file.endsWith(".js"));
+const commandFilesHypixel = fs.readdirSync("./commands/hypixel").filter(file => file.endsWith(".js"));
 
 
 // Add commands to client.commands
@@ -22,6 +23,11 @@ for (const file of commandFilesMc) {
     const command = require(`./commands/minecraft/${file}`);
     client.commands.set(command.name, command);
     console.log(`Loaded ./minecraft/${command.name}`)
+}
+for (const file of commandFilesHypixel) {
+    const command = require(`./commands/hypixel/${file}`);
+    client.commands.set(command.name, command);
+    console.log(`Loaded ./hypixel/${command.name}`)
 }
 
 // Check for an image function
