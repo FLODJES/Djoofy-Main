@@ -44,7 +44,7 @@ module.exports = {
             const data = await stats.json();
             
             let rankCheck = data.rank // gets the user rank
-            var rank;
+            let rank;
 
             if (!rankCheck){
                 rank = 'Non'

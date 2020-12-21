@@ -75,7 +75,7 @@ module.exports = {
                     **❯ Final K/D ratio:** \`${final_k_d}\`
                     `)
                     // .setImage('attachment://mainImage.png')
-                    .setFooter("Made by FLODJES#5225")
+                    .setFooter("Made by FLODJES#5225", "https://hypixel.net/styles/hypixel-v2/images/game-icons/BedWars-64.png")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {
                         const member = message.mentions.members.first() || message.member;
