@@ -12,7 +12,7 @@ const fetch = require("node-fetch");
 module.exports = {    
     name: "skywars",
     helpname: "[NEW!](https://top.gg/bot/780154878395547670/vote) " + config["prefix"] + "skywars",
-    description: "Get the Hypixel bedwars stats from a player.",
+    description: "Get the Hypixel skywars stats from a player.",
     aliases: ["skywars", "sw"],
     usage: config["prefix"] + "skywars [username]",
     category: config["categories"][1],
