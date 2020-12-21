@@ -32,7 +32,7 @@ module.exports = {
     description: "Give info about the server",
     aliases: ["serverinfo"],
     usage: config["prefix"] + "serverinfo",
-    category: config["categories"][1],
+    category: config["categories"][2],
     execute(message) {
 
         if (message.channel.type === "dm" ) return message.reply("I can't send server info in DM's.");

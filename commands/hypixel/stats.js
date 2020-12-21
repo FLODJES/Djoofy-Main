@@ -15,7 +15,7 @@ module.exports = {
     description: "Get the Hypixel stats from a player.",
     aliases: ["stats", "hypixel"],
     usage: config["prefix"] + "stats [username]",
-    category: config["categories"][0],
+    category: config["categories"][1],
     execute(message, args) {
         
         if(!args[0]) return message.channel.send("You must include a minecraft Java player's ign")
@@ -25,7 +25,7 @@ module.exports = {
             // console.log("username: " + response.username);  
 
 
-            new Jimp(2000, 500, '#FF00FF', async function (err, image) {
+            /* new Jimp(2000, 500, '#FF00FF', async function (err, image) {
                 await Jimp.read('./files/exp.png', async function (err, exp) {
                     exp.scaleToFit(1980, 150, Jimp.RESIZE_NEAREST_NEIGHBOR)
                     image.getBufferAsync(Jimp.MIME_PNG);
@@ -38,7 +38,7 @@ module.exports = {
                         image.write('./files/mainImage.png');
                     });
                 });
-            });
+            }); */
 
             const stats = await fetch(`https://api.slothpixel.me/api/players/${response.username}`);
             const data = await stats.json();
@@ -111,5 +111,3 @@ module.exports = {
 
     },
 }; 
-// `http://gen.plancke.io/exp/${response.username}.png`
-// `http://gen.plancke.io/achievementPoints/${response.username}.png`

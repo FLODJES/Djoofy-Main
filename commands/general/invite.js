@@ -9,7 +9,7 @@ module.exports = {
     description: "Invite the bot to your server!",
     aliases: ["invite"],
     usage: config["prefix"] + "invite",
-    category: config["categories"][1],
+    category: config["categories"][2],
     execute(message) {
 
         const member = message.mentions.members.first() || message.member;

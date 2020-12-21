@@ -25,7 +25,7 @@ module.exports = {
     description: "Give info about a specific user",
     aliases: ["whois", "userinfo"],
     usage: config["prefix"] + "whois [user]",
-    category: config["categories"][1],
+    category: config["categories"][2],
     execute(message) {
 
         if (message.channel.type === "dm" ) return message.reply("Sorry, but I can't send any userinfo in DM's.");

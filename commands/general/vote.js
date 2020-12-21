@@ -9,7 +9,7 @@ module.exports = {
     description: "Vote for the server!",
     aliases: ["vote"],
     usage: config["prefix"] + "vote",
-    category: config["categories"][1],
+    category: config["categories"][2],
     execute(message) {
         
         // Create embed

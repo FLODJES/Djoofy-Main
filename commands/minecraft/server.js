@@ -8,7 +8,7 @@ decode64 = require("base-64").decode;
 
 module.exports = {    
     name: "server",
-    helpname: "[NEW!](https://top.gg/bot/780154878395547670/vote) " + config["prefix"] + "server",
+    helpname: config["prefix"] + "server",
     description: "Get the serverinformation from a minecraft server.",
     aliases: ["server"],
     usage: config["prefix"] + "server [ip]",

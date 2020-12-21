@@ -9,7 +9,7 @@ module.exports = {
     description: "List all commands or give information (name, description, aliases,...) of a specific command",
     aliases: ["help"],
     usage: prefix + "help [command]",
-    category: categories[1],
+    category: categories[2],
     execute(message, args) {
         const data = [];
 		const { commands } = message.client;
@@ -40,7 +40,7 @@ module.exports = {
                     const value = []
                     commands.forEach(com => {
                         if (com.category == cat) {
-                            value.push(`❯ **${com.helpname}:** ${com.description} \`[${com.aliases}]\``);
+                            value.push(`❯ **${com.helpname}** ${com.description} \`[${com.aliases}]\``);
                         }
                     });
                     if (value.length != 0) {
