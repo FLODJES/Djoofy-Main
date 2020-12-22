@@ -1,10 +1,1 @@
-[x] Make the bot working.
-[x] Make whois.js work
-    [x] Display roles
-    [x] Fix role count
-
-[x] Make serverinfo.js
-
-[x] Put this files on github for prozilla(host) 
-
-[] Make the bot avaible for everyone.
+Take a picture of every duels map from hypixel
