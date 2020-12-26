@@ -32,9 +32,10 @@ module.exports = {
 
             const stats = await fetch(`https://api.slothpixel.me/api/players/${response.username}`);
             const data = await stats.json();
-            // console.log(data.stats.Duels.gamemodes) // Get all the different variables you can use
+            console.log(data.stats.Duels.gamemodes) // Get all the different variables you can use
             // console.log(hypixel.player.stats.Duels)
-            const duelData = data.stats.Duels.gamemodes
+            const duelData = data.stats.Duels.gameMode
+            let gameData;
 
             let wins;
             let losses;
@@ -49,6 +50,19 @@ module.exports = {
 
             /* Nodebuff */
             let heal_pots_used;
+
+            let duelWins;
+            let duelLosses;
+            let duelKills;
+            let duelDeaths;
+            let doublesWins;
+            let doublesLosses;
+            let doublesKills;
+            let doublesDeaths;
+            let foursWins;
+            let foursLosses;
+            let foursKills;
+            let foursDeaths;
             
             /* All game variables (needs to be donne before Prestige) */
             if(!gameMode){
@@ -63,55 +77,31 @@ module.exports = {
             else {
                 switch(gameMode) {
                     case "uhc": // Work in progress
+                        gameData = duelData.uhc
                         break;
                     case "skywars": // Work in progress
-                        wins = (
-                            data.stats.Duels.gamemodes.skywars
-                            ); 
+                    gameData = duelData.skywars 
                         break;
                     case "megawalls": // Work in progress
-                        wins = data.stats.Duels.gamemodes.mega_walls_duels.wins 
+                    gameData = duelData.megawalls
                         break;
                     case "sumo": // Donne
-                        wins = duelData.sumo.wins;
-                        if (!duelData.sumo.wins){ wins = "0"}
-                        losses = duelData.sumo.losses;
-                        if (!duelData.sumo.losses){ 
-                            losses = "0"
-                            win_loss_ratio = wins
-                        } else {
-                        win_loss_ratioCheck = duelData.sumo.wins / duelData.sumo.losses;
-                        win_loss_ratioRounded = win_loss_ratioCheck.toFixed(2);
-                        win_loss_ratio = Number(win_loss_ratioRounded)
-                        }
-
-                        kills = duelData.sumo.kills;
-                        if (!duelData.sumo.kills){ kills = "0"}
-                        deaths = duelData.sumo.deaths;
-                        if (!duelData.sumo.deaths){ 
-                            deaths = "0"
-                            kill_death_ratio = kills
-                        } else {
-                        kill_death_ratioCheck = duelData.sumo.kills / duelData.sumo.deaths;
-                        kill_death_ratioRounded = kill_death_ratioCheck.toFixed(2);
-                        kill_death_ratio = Number(kill_death_ratioRounded);
-                        }
+                    gameData = duelData.sumo
                         break;
                     case "op": // Work in progress
-                        wins = data.stats.Duels.gamemodes.op_duels.wins
+                    gameData = duelData.op
                         break;
                     case "bridge": // Work in progress
-                        wins = (
-                            data.stats.Duels.gamemodes.bridge
-                            );
+                    gameData = duelData.bridge
                         break;
                     case "bow": // Work in progress
-                        wins = data.stats.Duels.gamemodes
                         break;
                     case "classic": // Work in progress
-                        wins = data.stats.Duels.gamemodes.classic_duel.wins
+                    gameData = duelData.classic
                         break;
                     case "nodebuff": // Donne
+                    gameData = duelData.potion_duel
+
                         wins = duelData.potion_duel.wins 
                         if (!duelData.potion_duel.wins){ wins = "0"}
                         losses = duelData.potion_duel.losses;
@@ -140,18 +130,88 @@ module.exports = {
                         if (!duelData.potion_duel.heal_pots_used){ heal_pots_used = "0"}
                         break;
                     case "blitz": // Work in progress
-                        wins = data.stats.Duels.gamemodes.blitz_duel.wins
+                    gameData = duelData.blitz
                         break;
                     case "combo": // Work in progress
-                        wins = data.stats.Duels.gamemodes.combo_duel.wins
+                    gameData = duelData.combo
                         break;
                     case "spleef": // Work in progress
-                        wins = data.stats.Duels.gamemodes
+                    gameData = duelData.spleef
                         break;
                 };
             ;}
+            
+            if(gameMode === "uhc", "bridge"){
+                // solo
+                // wins / losses
+                // duelWins = gameData.duels.wins;
+                    if (!gameData.duels.wins){ duelWins = "0"}
+                    else {duelWins = gameData.duels.wins;}
+                duelLosses = gameData.duels.losses;
+                    if (!gameData.duels.wins){ duelLosses = "0"}
+                // kills / deaths
+                duelKills = gameData.duels.kills;
+                    if (!gameData.duels.kills){ duelKills = "0"}
+                duelDeaths = gameData.duels.deaths;
+                    if (!gameData.duels.deaths){ duelDeaths = "0"}
+                
+                // doubles
+                // wins / losses
+                duelWins = gameData.duels.wins;
+                    if (!gameData.duels.wins){ duelWins = "0"}
+                duelLosses = gameData.duels.losses;
+                    if (!gameData.duels.wins){ duelLosses = "0"}
+                // kills / deaths
+                duelKills = gameData.duels.kills;
+                    if (!gameData.duels.kills){ duelKills = "0"}
+                duelDeaths = gameData.duels.deaths;
+                    if (!gameData.duels.deaths){ duelDeaths = "0"}
+                
+                // fours
+                // wins / losses
+                foursWins = gameData.fours.wins;
+                    if (!gameData.fours.wins){ foursWins = "0"}
+                foursLosses = gameData.fours.losses;
+                    if (!gameData.fours.wins){ foursLosses = "0"}
+                // kills / deaths
+                foursKills = gameData.fours.kills;
+                    if (!gameData.fours.kills){ foursKills = "0"}
+                foursDeaths = gameData.fours.deaths;
+                    if (!gameData.fours.deaths){ foursDeaths = "0"}
+                
 
-    
+                if (losses = "0"){ 
+                    win_loss_ratio = wins
+                } else { // win_loss_ratio
+                    win_loss_ratioCheck = wins / losses;
+                    win_loss_ratioRounded = win_loss_ratioCheck.toFixed(2);
+                    win_loss_ratio = Number(win_loss_ratioRounded)
+                }
+            } else {
+                wins = gameData.wins;
+                if (!gameData.wins){ wins = "0"}
+                losses = gameData.losses;
+                if (!gameData.losses){ 
+                    losses = "0"
+                    win_loss_ratio = wins
+                } else {
+                    win_loss_ratioCheck = gameData.wins / gameData.losses;
+                    win_loss_ratioRounded = win_loss_ratioCheck.toFixed(2);
+                    win_loss_ratio = Number(win_loss_ratioRounded)
+                }
+
+                kills = gameData.kills;
+                if (!gameData.kills){ kills = "0"}
+                deaths = gameData.deaths;
+                if (!gameData.deaths){ 
+                    deaths = "0"
+                    kill_death_ratio = kills
+                } else {
+                    kill_death_ratioCheck = gameData.kills / gameData.deaths;
+                    kill_death_ratioRounded = kill_death_ratioCheck.toFixed(2);
+                    kill_death_ratio = Number(kill_death_ratioRounded);
+                }
+            }
             // Prestige:
             function getDivision(wins) {
                 let prestige;

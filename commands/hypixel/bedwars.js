@@ -28,7 +28,7 @@ module.exports = {
             const stats = await fetch(`https://api.slothpixel.me/api/players/${response.username}`);
             const data = await stats.json();
             // console.log(data.stats.BedWars) // Get all the different variables you can use.
-            let level = "✫" + data.stats.BedWars.level // gets the user level
+            let level = data.stats.BedWars.level + "✫" // gets the user level
             let coins = data.stats.BedWars.coins // gets the user coins
             let wins = data.stats.BedWars.wins // gets the user wins
             let losses = data.stats.BedWars.losses // gets the user losses
@@ -49,32 +49,36 @@ module.exports = {
 
                 // Create embed
                 const Embed = new Discord.MessageEmbed()
-                    // .attachFiles(['./files/mainImage.png'])
+                    .attachFiles(['./files/background/bedwars.png'])
                     .setTitle(response.username + "'s Bedwars stats.")
                     .setURL("https://plancke.io/hypixel/player/stats/" + response.username + "#BedWars")
                     .setThumbnail(response.skin.headleft)
                     .addField("__General Stats:__", stripIndents`
-                    **❯ Star:** \`${level}\`
-                    **❯ Coins:** \`${coins}\`
-                    **❯ Wins:** \`${wins}\`
-                    **❯ Losses:** \`${losses}\`
-                    **❯ W/L ratio:** \`${w_l}\`
-                    **❯ Winstreak:** \`${winstreak}\`
+                    ❯ Star: \`${level}\`
+                    ❯ Coins: \`${coins}\`
+                    ❯ Wins: \`${wins}\`
+                    ❯ Losses: \`${losses}\`
+                    ❯ W/L ratio: \`${w_l}\`
+                    ❯ Winstreak: \`${winstreak}\`
                     `, true)
                     .addField("__Spicy Stats:__", stripIndents`
-                    **❯ Kills:** \`${kills}\`
-                    **❯ Deaths:** \`${deaths}\`
-                    **❯ K/D ratio:** \`${k_d}\`
-                    **❯ Beds broken:** \`${beds_broken}\`
-                    **❯ Beds lost:** \`${beds_lost}\`
-                    **❯ Bed ratio:** \`${bed_ratio}\`
+                    ❯ Kills: \`${kills}\`
+                    ❯ Deaths: \`${deaths}\`
+                    ❯ K/D ratio: \`${k_d}\`
+                    ❯ Beds broken: \`${beds_broken}\`
+                    ❯ Beds lost: \`${beds_lost}\`
+                    ❯ Bed ratio: \`${bed_ratio}\`
                     `, true)
-                    .addField("__Kill/Dead Stats:__", stripIndents`
-                    **❯ Final kills:** \`${final_kills}\`
-                    **❯ Final deaths:** \`${final_deaths}\`
-                    **❯ Final K/D ratio:** \`${final_k_d}\`
-                    `)
-                    // .setImage('attachment://mainImage.png')
+                    .addField('\u200b', '\u200b', true)
+                    .addFields(
+                        {name: stripIndents`
+                        ❯ Final kills: \`${final_kills}\`
+                        ❯ Final deaths: \`${final_deaths}\`
+                        `, value: "\u200B", inline: true},
+                        {name: `❯ Final K/D ratio: \`${final_k_d}\``, value: "\u200B", inline: true },
+                        { name: '\u200B', value: '\u200B', inline: true }
+                    )
+                    .setImage('attachment://bedwars.png')
                     .setFooter("Made by FLODJES#5225", "https://hypixel.net/styles/hypixel-v2/images/game-icons/BedWars-64.png")
                     .setTimestamp();
                     if (message.channel.type != "dm" ) {
